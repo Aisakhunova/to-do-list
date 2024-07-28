@@ -2,19 +2,15 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../redux/slices/todoSlice';
+import Modal from './Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 const AddTodo: React.FC = () => {
      const [isModalOpen, setIsModalOpen] = useState(false);
 
-     const openModal = () => {
-        setIsModalOpen(true);
-     }
-     const closeModal = () => {
-        setIsModalOpen(false);
-     }
+     const openModal = () => setIsModalOpen(true); 
+     const closeModal = () => setIsModalOpen(false);
     
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -77,7 +73,7 @@ const AddTodo: React.FC = () => {
     </div>
   </div>
 </div> */}
-            <button onClick={openModal}> Add Todo</button>
+            {/* <button onClick={openModal}> Add Todo</button>
             {isModalOpen &&(
                 <div>
                     <button onClick={closeModal}>Close</button>
@@ -102,7 +98,34 @@ const AddTodo: React.FC = () => {
             />
             <button onClick={handleSumbit}>Add</button>
                 </div>
-            ) }
+            ) } */}
+        <button onClick={openModal} className="button btn bg-black text-light">Add a task</button>
+        <Modal isVisible={isModalOpen} onClose={closeModal}>
+          <h3>Fill the form</h3>
+          <br />
+            <input
+            type='text'
+            placeholder='Title'
+            value={title}
+            onChange={e => {setTitle(e.target.value);}}
+            />
+
+            <input
+            type='text'
+            placeholder='Description'
+            value={description}
+            onChange={e => {setDescription(e.target.value)}}
+            />
+            
+            <input
+            type='date'
+            value={deadLine}
+            onChange={e => {setDeadLine(e.target.value)}}
+            />
+            <br />
+             <button className="button btn bg-secondary float-end" onClick={handleSumbit}>Add</button>
+        </Modal>
+
         </div>
     )
     

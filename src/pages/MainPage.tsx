@@ -12,9 +12,10 @@ const MainPage: React.FC = () => {
 
     return (
         <div className="container">
-
-            <AddTodo/>
+            
             <TodoList todos={todos}/>
+            <AddTodo/>
+            
             
         </div>
     );

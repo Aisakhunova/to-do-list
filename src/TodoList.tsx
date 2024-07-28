@@ -27,7 +27,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
           <div>
           <input
               type="checkbox"
-              className="form-check-input me-2 p-3 bg-success"
+              className={`form-check-input me-2 p-3 ${todo.done ? 'bg-success' : 'bg-secondary'}`}
               checked={todo.done}
               onChange={() => handleCheckboxChange(todo.id)}
             />
